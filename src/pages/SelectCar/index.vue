@@ -8,6 +8,7 @@
 
 <script>
 import axios from "axios";
+import { getMain } from "../../utils/main";
 export default {
   name: "SelectCar",
   data() {
@@ -28,6 +29,12 @@ export default {
   },
   mounted() {
     this.getCarList();
+
+    this.$nextTick(() => {
+      //  当前页面隐藏底部
+      let main = getMain();
+      main.appInfo.footer.changeFooter(false);
+    });
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <router-view></router-view> 
+  <div id="app-vue2">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,8 +11,8 @@ export default {
 };
 </script>
 
-<style>
-#app {
+<style scoped>
+#app-vue2 {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
