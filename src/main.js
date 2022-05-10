@@ -37,6 +37,11 @@ export const mount = (app) => {
     console.log('vue2 on', data)
   })
 
+  //  子应用通过 store 修改数据
+  window.store.update({
+    a:521
+  })
+
 }
 
 //  卸载

@@ -3,6 +3,7 @@
     <h3>Select Car Page</h3>
     <p>{{ message }}</p>
     <p>{{ carList }}</p>
+    <p>{{ storeA }}</p>
   </div>
 </template>
 
@@ -16,6 +17,9 @@ export default {
       message: "This is a vue2.0 project with SelectCar page.",
       carList: [],
     };
+  },
+  computed: {
+    storeA: () => window.store.getStore().a,
   },
   methods: {
     async getCarList() {
