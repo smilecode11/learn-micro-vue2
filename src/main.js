@@ -30,6 +30,12 @@ export const mount = (app) => {
   render()
   setMain(app)
   // app.appInfo.header.changeHeader(false)
+  window.custom.emit("test1", {
+    a: 1
+  })
+  window.custom.on('test2', (data) => {
+    console.log('vue2 on', data)
+  })
 
 }
 
