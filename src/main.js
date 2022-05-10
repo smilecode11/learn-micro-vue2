@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { setMain } from './utils/main'
 
 Vue.config.productionTip = false
 
@@ -15,37 +14,36 @@ const render = () => {
 }
 
 //  非微前端框架时, 执行 rander 函数, 正常运行项目
-if (!window.__MICRO_WEB__) {
+if (!window.__POWERED_BY_QIANKUN__) {
   render()
 }
 
 //#region 微前端框架中控制的几个生命周期函数
 //  开始加载应用
-export const bootstrap = () => {
+export const bootstrap = async () => {
   console.log("bootstrap")
 }
 
 //  渲染
-export const mount = (app) => {
+export const mount = async (props) => {
+  console.log(props, '- vue2 mount')
+  props.footer.changeFooter(false)
   render()
-  setMain(app)
-  // app.appInfo.header.changeHeader(false)
-  window.custom.emit("test1", {
-    a: 1
-  })
-  window.custom.on('test2', (data) => {
-    console.log('vue2 on', data)
-  })
+  // props.footer.footerStatus(false)
 
-  //  子应用通过 store 修改数据
-  window.store.update({
-    a:521
-  })
+  props.onGlobalStateChange((state, prev) => {
+    // state: 变更后的状态; prev 变更前的状态
+    console.log(state, prev);
+  });
 
+  props.setGlobalState({
+    a: 250,
+    b: 520
+  });
 }
 
 //  卸载
-export const unmount = () => {
+export const unmount = async () => {
   console.log('unmount', instance)
   // 处理销毁应用事件等操作
 }

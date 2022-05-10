@@ -19,7 +19,7 @@ export default {
     };
   },
   computed: {
-    storeA: () => window.store.getStore().a,
+    storeA: () => window?.store?.getStore()?.a,
   },
   methods: {
     async getCarList() {
@@ -37,7 +37,7 @@ export default {
     this.$nextTick(() => {
       //  当前页面隐藏底部
       let main = getMain();
-      main.appInfo.footer.changeFooter(false);
+      main?.appInfo?.footer?.changeFooter(false);
     });
   },
 };
